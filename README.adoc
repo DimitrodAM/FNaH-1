@@ -1,0 +1,33 @@
+= Five Nights at Home 1
+:icons:
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+[%hardbreaks]
+WARNING: This repository is for the game itself. Bug reports go here.
+If you want to view its docs or submit a suggestion, go to https://github.com/DimitrodAM/FNaH-1-Meta[DimitrodAM/FNaH-1-Meta].
+
+This is the home of FNaH 1. It currently consists of tests and will be rewritten from scratch
+once development of the release version begins, however these tests show ideas and it is likely that
+some of their code will be reused in the release.
+
+== Playing
+
+Exported versions of the tests can be found on the https://github.com/DimitrodAM/FNaH-1/releases/latest[releases] page.
+Download the executable for your platform _as well as the `.pck` file which you should put in the same directory_
+and then run the executable.
+
+== Contributing
+
+Bug reports and fixes go here. Proposals go to the meta repository,
+and if they're approved you can submit a pull request in this repository.
+
+== License
+
+The source code is licensed under the https://github.com/DimitrodAM/FNaH-1/blob/tests/LICENSE[GPL-3.0 License]
+and the assets owned by DimitrodAM are are licensed under https://creativecommons.org/licenses/by/4.0[CC BY 4.0].
