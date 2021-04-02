@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/corridor_the_office.jpg-8df7ec9f9c37cc31d4072b435c500871.stex"
+path="res://.import/static_1.jpg-f49372bded88e866b20b537a703f68a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rooms/corridor_the_office.jpg"
-dest_files=[ "res://.import/corridor_the_office.jpg-8df7ec9f9c37cc31d4072b435c500871.stex" ]
+source_file="res://camera/static_1.jpg"
+dest_files=[ "res://.import/static_1.jpg-f49372bded88e866b20b537a703f68a0.stex" ]
 
 [params]
 

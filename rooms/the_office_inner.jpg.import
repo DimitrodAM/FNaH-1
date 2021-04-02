@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/corridor_storage_room.jpg-692e520ce4cfa7f790e6dfac866a317a.stex"
+path="res://.import/the_office_inner.jpg-c2e2278fd711959d8a5d892b4344e7f6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rooms/corridor_storage_room.jpg"
-dest_files=[ "res://.import/corridor_storage_room.jpg-692e520ce4cfa7f790e6dfac866a317a.stex" ]
+source_file="res://rooms/the_office_inner.jpg"
+dest_files=[ "res://.import/the_office_inner.jpg-c2e2278fd711959d8a5d892b4344e7f6.stex" ]
 
 [params]
 

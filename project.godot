@@ -15,14 +15,15 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FNaH Room Move Test"
-run/main_scene="res://RoomMoveTest.tscn"
+config/name="FNaH Camera & Main Test"
+run/main_scene="res://MainTest.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
