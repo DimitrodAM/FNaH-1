@@ -18,7 +18,7 @@ some of their code will be reused in the release.
 
 == Playing
 
-Exported versions of the tests can be found on the https://github.com/DimitrodAM/FNaH-1/releases/latest[releases] page.
+Exported versions of the tests can be found on the https://github.com/DimitrodAM/FNaH-1/releases[releases] page.
 Download the executable for your platform _as well as the `.pck` file which you should put in the same directory_
 and then run the executable.
 
