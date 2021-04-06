@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/PowerConsumerFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/monitors/PowerMonitorTest.gd" type="Script" id=2]
+[ext_resource path="res://scenes/FullscreenMonitor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/PowerConsumer.tscn" type="PackedScene" id=4]
+
+[node name="Node2D" type="Node2D" groups=[
+"notify_consumers",
+]]
+script = ExtResource( 2 )
+consumer_scene = ExtResource( 4 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Consumers" type="VBoxContainer" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -229.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total" type="HBoxContainer" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -229.0
+margin_bottom = -128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TotalLabel" type="Label" parent="UI/Total"]
+margin_right = 305.0
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 1 )
+text = "Total"
+
+[node name="Total" type="Label" parent="UI/Total"]
+margin_left = 309.0
+margin_right = 1920.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "100/500W"
+align = 2
+
+[node name="FullscreenMonitor" parent="UI" instance=ExtResource( 3 )]

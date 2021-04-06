@@ -15,9 +15,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FNaH Camera & Main Test"
-run/main_scene="res://MainTest.tscn"
+config/name="FNaH Power Test"
+run/main_scene="res://scenes/MainTest.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+PowerVars="*res://PowerVars.gd"
 
 [display]
 

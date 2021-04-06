@@ -3,14 +3,14 @@ static func set_node_visible(node, visible):
 	if "visible" in node:
 		original["current"] = node.visible
 		node.visible = visible
-	for child in node.get_children():
-		original["children"][child.get_name()] = set_node_visible(child, visible)
+	# for child in node.get_children():
+	# 	original["children"][child.get_name()] = set_node_visible(child, visible)
 	return original
 static func restore_node_visibility(node, original):
 	if "visible" in node and "current" in original:
 		node.visible = original["current"]
-	for child_name in original["children"]:
-		restore_node_visibility(node.get_node(child_name), original["children"][child_name])
+	# for child_name in original["children"]:
+	# 	restore_node_visibility(node.get_node(child_name), original["children"][child_name])
 
 static func set_node_mouse_filter(node, filter):
 	if "mouse_filter" in node:
@@ -33,6 +33,10 @@ static func add_node_position(node, position):
 	for child in node.get_children():
 		if child is CanvasLayer:
 			add_node_position(child, position)
+
+
+static func float_to_string_no_trailing(num):
+	return ("%f" % num).rstrip("0").rstrip(".")
 
 
 static func pascal_to_snake_case(string):

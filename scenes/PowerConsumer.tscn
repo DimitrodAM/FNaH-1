@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/PowerConsumerFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/PowerConsumer.gd" type="Script" id=2]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchor_right = 1.0
+custom_constants/separation = 32
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+label = "Camera Monitor"
+
+[node name="Label" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 854.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+text = "Camera Monitor"
+
+[node name="PowerUsage" type="Label" parent="."]
+margin_left = 886.0
+margin_top = 3.0
+margin_right = 1693.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.5, 0.5, 0.5, 1 )
+text = "0W"
+align = 2
+
+[node name="PowerState" type="Button" parent="."]
+margin_left = 1725.0
+margin_right = 1920.0
+margin_bottom = 107.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "OFF"
+flat = true
+align = 2
+[connection signal="pressed" from="PowerState" to="." method="_on_PowerState_pressed"]

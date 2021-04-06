@@ -1,0 +1,173 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/monitors/CameraTest.gd" type="Script" id=1]
+[ext_resource path="res://assets/rooms/hallway_the_office.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/monitor/static_4.jpg" type="Texture" id=3]
+[ext_resource path="res://scenes/FullscreenMonitor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/monitor/camera_button.png" type="Texture" id=5]
+[ext_resource path="res://assets/monitor/camera_button_current.png" type="Texture" id=6]
+[ext_resource path="res://assets/monitor/static_8.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/monitor/static_1.jpg" type="Texture" id=8]
+[ext_resource path="res://assets/monitor/static_2.jpg" type="Texture" id=9]
+[ext_resource path="res://assets/monitor/static_7.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/monitor/static_6.jpg" type="Texture" id=11]
+[ext_resource path="res://assets/monitor/camera_01.png" type="Texture" id=12]
+[ext_resource path="res://assets/monitor/camera_02.png" type="Texture" id=13]
+[ext_resource path="res://assets/monitor/static_5.jpg" type="Texture" id=14]
+[ext_resource path="res://assets/monitor/static_3.jpg" type="Texture" id=15]
+[ext_resource path="res://assets/monitor/camera_03.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="Node2D" type="Node2D" groups=[
+"notify_consumers",
+]]
+script = ExtResource( 1 )
+consumer_name = "camera_monitor"
+default_camera = "hallway_the_office"
+
+[node name="Camera" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 180, 1920, 1080 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Static" type="AnimatedSprite" parent="Camera"]
+visible = false
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 1 )
+
+[node name="StaticFadeoutTween" type="Tween" parent="Camera"]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Cameras" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HallwayTheOffice" type="TextureButton" parent="UI/Cameras"]
+margin_left = 1308.0
+margin_top = 587.23
+margin_right = 1478.0
+margin_bottom = 700.23
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Cameras/HallwayTheOffice"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 19.0
+margin_top = 19.0
+margin_right = -17.0
+margin_bottom = -19.0
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HallwayMaintenanceRoom" type="TextureButton" parent="UI/Cameras"]
+margin_left = 1586.0
+margin_top = 587.23
+margin_right = 1756.0
+margin_bottom = 700.23
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Cameras/HallwayMaintenanceRoom"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 19.0
+margin_top = 19.0
+margin_right = -17.0
+margin_bottom = -19.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaintenanceRoom" type="TextureButton" parent="UI/Cameras"]
+margin_left = 1586.0
+margin_top = 784.0
+margin_right = 1756.0
+margin_bottom = 897.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Cameras/MaintenanceRoom"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 19.0
+margin_top = 19.0
+margin_right = -17.0
+margin_bottom = -19.0
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Paths" type="Node2D" parent="UI"]
+
+[node name="Cam01-02" type="Line2D" parent="UI/Paths"]
+position = Vector2( 0, -196.77 )
+points = PoolVector2Array( 1478, 842, 1588.85, 842 )
+default_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[node name="Cam02-03" type="Line2D" parent="UI/Paths"]
+position = Vector2( 0, -196.77 )
+points = PoolVector2Array( 1671, 893.954, 1670.97, 983.582 )
+default_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[node name="TurnedOff" type="ColorRect" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenMonitor" parent="UI" instance=ExtResource( 4 )]
