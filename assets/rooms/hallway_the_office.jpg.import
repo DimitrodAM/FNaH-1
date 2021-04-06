@@ -14,8 +14,8 @@ dest_files=[ "res://.import/hallway_the_office.jpg-d048cdbf6a82c7dcba080e8cf8f7b
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=1
+compress/lossy_quality=0.9
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
