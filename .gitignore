@@ -8,3 +8,7 @@ export_presets.cfg
 data_*/
 
 /Exported
+*.pck
+*.x86_64
+*.exe
+*.apk
