@@ -27,11 +27,13 @@ func _instance_scene(scene_name):
 func _ready():
 	randomize()
 	
+	$UI/BlackScreen.visible = true
+	
 	for scene_name in scenes:
 		if scenes[scene_name]["instance_on"] == "start":
 			_instance_scene(scene_name)
 	
-	if !_scene_instances.has(default_scene):
+	if !default_scene in _scene_instances:
 		_instance_scene(default_scene)
 	_current_scene = default_scene
 	add_child(_scene_instances[_current_scene])
@@ -40,11 +42,11 @@ func _change_scene(scene_name):
 	_new_scene = scene_name
 	
 	$UI/BlackScreen.mouse_filter = Control.MOUSE_FILTER_STOP
-	$UI/Tween.interpolate_property($UI/BlackScreen, "modulate",
+	$UI/BlackScreenTween.interpolate_property($UI/BlackScreen, "modulate",
 		Color(1, 1, 1, 0), Color(1, 1, 1, 1), .25,
 		Tween.TRANS_LINEAR)
-	$UI/Tween.start()
-	yield($UI/Tween, "tween_completed")
+	$UI/BlackScreenTween.start()
+	yield($UI/BlackScreenTween, "tween_completed")
 	
 	yield(get_tree(), "idle_frame")
 	if scenes[_current_scene]["instance_on"] != "start":
@@ -59,11 +61,11 @@ func _change_scene(scene_name):
 	
 	yield(get_tree().create_timer(0.125), "timeout")
 	
-	$UI/Tween.interpolate_property($UI/BlackScreen, "modulate",
+	$UI/BlackScreenTween.interpolate_property($UI/BlackScreen, "modulate",
 		Color(1, 1, 1, 1), Color(1, 1, 1, 0), .25,
 		Tween.TRANS_LINEAR)
-	$UI/Tween.start()
-	yield($UI/Tween, "tween_completed")
+	$UI/BlackScreenTween.start()
+	yield($UI/BlackScreenTween, "tween_completed")
 	
 	$UI/BlackScreen.mouse_filter = Control.MOUSE_FILTER_IGNORE
 

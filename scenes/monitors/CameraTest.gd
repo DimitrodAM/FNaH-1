@@ -19,6 +19,7 @@ const cameras = {
 
 export(String) var consumer_name
 export(String) var default_camera
+export(bool) var fullscreen_monitor_node = true
 
 
 var _current_camera
@@ -28,6 +29,7 @@ var _current_camera
 func _ready():
 	$Camera/Static.playing = true
 	$Camera/Static.visible = true
+	get_fullscreen_monitor_node().visible = fullscreen_monitor_node
 	
 	var l_cameras = $UI/Cameras.get_children()
 	for camera in l_cameras:
@@ -58,6 +60,10 @@ func on_consumer_changed(changed_consumer_name, consumer):
 	if changed_consumer_name != consumer_name:
 		return
 	$UI/TurnedOff.visible = !consumer["power_state"]
+
+
+func _on_PowerMonitorToggle_toggled(button_pressed):
+	$UI/PowerMonitor.visible = button_pressed
 
 
 func get_fullscreen_monitor_node():

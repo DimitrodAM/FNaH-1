@@ -15,13 +15,17 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FNaH Power Test"
+config/name="FNaH Items & Temperature Test"
 run/main_scene="res://scenes/MainTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-PowerVars="*res://PowerVars.gd"
+TemperatureVars="*res://scenes/Temperature.tscn"
+PowerVars="*res://singletons/PowerVars.gd"
+PowerConsumers="res://scenes/power_consumers/PowerConsumers.tscn"
+ItemVars="*res://singletons/ItemVars.gd"
+Items="res://scenes/items/Items.tscn"
 
 [display]
 

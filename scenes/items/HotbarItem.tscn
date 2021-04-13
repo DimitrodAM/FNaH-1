@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/items/HotbarItem.gd" type="Script" id=1]
+[ext_resource path="res://fonts/PixeldroidMenu.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+extra_spacing_top = -5
+extra_spacing_bottom = -5
+font_data = ExtResource( 2 )
+
+[node name="Button" type="Button"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 192, 192 )
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+enabled_focus_mode = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+label = "Portable heater"
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "Portable heater"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]

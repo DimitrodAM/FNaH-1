@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/RoomMoveTest.gd" type="Script" id=1]
-[ext_resource path="res://assets/rooms/maintenance_room_inner.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/rooms/the_office.jpg" type="Texture" id=2]
+[ext_resource path="res://scenes/items/Hotbar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/TemperatureDisplay.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128, 540 )
@@ -68,6 +70,18 @@ __meta__ = {
 [node name="MoveTimer" type="Timer" parent="Room"]
 wait_time = 0.125
 one_shot = true
+
+[node name="UI" type="Control" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hotbar" parent="UI" instance=ExtResource( 3 )]
+
+[node name="TemperatureDisplay" parent="UI" instance=ExtResource( 4 )]
 
 [node name="Rooms" type="Node" parent="."]
 
@@ -225,10 +239,10 @@ position = Vector2( 979.183, 555 )
 shape = SubResource( 12 )
 disabled = true
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UICanvas" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="BlackScreen" type="ColorRect" parent="UI"]
+[node name="BlackScreen" type="ColorRect" parent="UICanvas"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -239,10 +253,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeaveTween" type="Tween" parent="UI"]
+[node name="LeaveTween" type="Tween" parent="UICanvas"]
 
-[node name="EnterTween" type="Tween" parent="UI"]
+[node name="EnterTween" type="Tween" parent="UICanvas"]
 [connection signal="timeout" from="Room/MoveTimer" to="." method="_on_MoveTimer_timeout"]
-[connection signal="tween_completed" from="UI/LeaveTween" to="." method="_on_LeaveTween_tween_completed"]
-[connection signal="tween_started" from="UI/LeaveTween" to="." method="_on_LeaveTween_tween_started"]
-[connection signal="tween_completed" from="UI/EnterTween" to="." method="_on_EnterTween_tween_completed"]
+[connection signal="tween_completed" from="UICanvas/LeaveTween" to="." method="_on_LeaveTween_tween_completed"]
+[connection signal="tween_started" from="UICanvas/LeaveTween" to="." method="_on_LeaveTween_tween_started"]
+[connection signal="tween_completed" from="UICanvas/EnterTween" to="." method="_on_EnterTween_tween_completed"]

@@ -3,9 +3,12 @@ extends Node2D
 const Util = preload("res://Util.gd")
 
 export(PackedScene) var consumer_scene
+export(bool) var fullscreen_monitor_node = true
 
 
 func _ready():
+	get_fullscreen_monitor_node().visible = fullscreen_monitor_node
+	
 	on_consumers_changed(PowerVars.consumers)
 
 

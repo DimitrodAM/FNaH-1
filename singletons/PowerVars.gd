@@ -4,11 +4,25 @@ const MAX_POWER = 500
 
 var consumers = {
 	"camera_monitor": {
-		"label": "Camera Monitor",
+		"label": "Camera monitor",
 		"power_usage": 100,
 		"power_state": true,
 	},
+	"desktop_heater": {
+		"label": "Desktop heater",
+		"power_usage": 100,
+	},
+	"air_conditioner": {
+		"label": "Air conditioner",
+		"power_usage": 100,
+	},
 }
+
+
+func _init():
+	for consumer in consumers.values():
+		if !"power_state" in consumer:
+			consumer["power_state"] = false
 
 
 # Should ALWAYS be called if consumers is changed unless consumer_changed handles this change.

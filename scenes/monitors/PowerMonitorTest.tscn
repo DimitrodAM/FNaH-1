@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/PowerConsumerFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/PowerConsumerFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/monitors/PowerMonitorTest.gd" type="Script" id=2]
 [ext_resource path="res://scenes/FullscreenMonitor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/PowerConsumer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/power_consumers/PowerConsumer.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D" groups=[
 "notify_consumers",
@@ -47,15 +47,17 @@ __meta__ = {
 }
 
 [node name="TotalLabel" type="Label" parent="UI/Total"]
+margin_top = 5.0
 margin_right = 305.0
-margin_bottom = 101.0
+margin_bottom = 96.0
 custom_fonts/font = ExtResource( 1 )
 text = "Total"
 
 [node name="Total" type="Label" parent="UI/Total"]
 margin_left = 309.0
+margin_top = 5.0
 margin_right = 1920.0
-margin_bottom = 101.0
+margin_bottom = 96.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "100/500W"

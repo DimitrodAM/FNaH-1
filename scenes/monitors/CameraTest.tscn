@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/monitors/CameraTest.gd" type="Script" id=1]
 [ext_resource path="res://assets/rooms/hallway_the_office.jpg" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/monitor/static_5.jpg" type="Texture" id=14]
 [ext_resource path="res://assets/monitor/static_3.jpg" type="Texture" id=15]
 [ext_resource path="res://assets/monitor/camera_03.png" type="Texture" id=16]
+[ext_resource path="res://fonts/PixeldroidMenu.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://scenes/monitors/PowerMonitorTest.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,6 +26,12 @@ animations = [ {
 "name": "default",
 "speed": 15.0
 } ]
+
+[sub_resource type="DynamicFont" id=2]
+size = 120
+extra_spacing_top = -10
+extra_spacing_bottom = -5
+font_data = ExtResource( 17 )
 
 [node name="Node2D" type="Node2D" groups=[
 "notify_consumers",
@@ -161,6 +169,27 @@ position = Vector2( 0, -196.77 )
 points = PoolVector2Array( 1671, 893.954, 1670.97, 983.582 )
 default_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 
+[node name="PowerMonitor" parent="UI" instance=ExtResource( 18 )]
+visible = false
+fullscreen_monitor_node = false
+
+[node name="PowerMonitorToggle" type="Button" parent="UI"]
+anchor_left = 0.6
+anchor_right = 0.6
+margin_left = -141.5
+margin_top = -2.0
+margin_right = 141.5
+margin_bottom = 84.0
+focus_mode = 0
+custom_fonts/font = SubResource( 2 )
+toggle_mode = true
+action_mode = 0
+enabled_focus_mode = 0
+text = "Power"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TurnedOff" type="ColorRect" parent="UI"]
 visible = false
 anchor_right = 1.0
@@ -171,3 +200,4 @@ __meta__ = {
 }
 
 [node name="FullscreenMonitor" parent="UI" instance=ExtResource( 4 )]
+[connection signal="toggled" from="UI/PowerMonitorToggle" to="." method="_on_PowerMonitorToggle_toggled"]

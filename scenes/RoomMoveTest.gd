@@ -155,10 +155,10 @@ func _transition_click(_viewport, event, _shape_idx, transition):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT \
 			and !_in_transition:
 		_new_room = rooms[transition]
-		$UI/LeaveTween.interpolate_property($UI/BlackScreen, "modulate",
+		$UICanvas/LeaveTween.interpolate_property($UICanvas/BlackScreen, "modulate",
 			Color(1, 1, 1, 0), Color(1, 1, 1, 1), .25,
 			Tween.TRANS_LINEAR)
-		$UI/LeaveTween.start()
+		$UICanvas/LeaveTween.start()
 
 func _transition_mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -175,10 +175,10 @@ func _on_LeaveTween_tween_completed(_object, _key):
 	$Room/MoveTimer.start()
 
 func _on_MoveTimer_timeout():
-	$UI/EnterTween.interpolate_property($UI/BlackScreen, "modulate",
+	$UICanvas/EnterTween.interpolate_property($UICanvas/BlackScreen, "modulate",
 		Color(1, 1, 1, 1), Color(1, 1, 1, 0), .25,
 		Tween.TRANS_LINEAR)
-	$UI/EnterTween.start()
+	$UICanvas/EnterTween.start()
 
 func _on_EnterTween_tween_completed(_object, _key):
 	_in_transition = false
