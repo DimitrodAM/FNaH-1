@@ -12,3 +12,4 @@ data_*/
 *.x86_64
 *.exe
 *.apk
+*.keystore
