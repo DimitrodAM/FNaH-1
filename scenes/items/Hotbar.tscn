@@ -5,6 +5,7 @@
 
 [node name="Control" type="Control" groups=[
 "notify_items",
+"notify_room",
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,7 +20,7 @@ item_scene = ExtResource( 1 )
 anchor_right = 1.0
 margin_bottom = 128.0
 mouse_filter = 2
-custom_constants/separation = 0
+custom_constants/separation = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/static_4.jpg-a4493bd692d2a5eeb1129b43fa767f32.stex"
+path="res://.import/camera_11.png-d198da71fe2802265d393ad3c1e5b4be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/monitor/static_4.jpg"
-dest_files=[ "res://.import/static_4.jpg-a4493bd692d2a5eeb1129b43fa767f32.stex" ]
+source_file="res://assets/ui/monitor/camera_11.png"
+dest_files=[ "res://.import/camera_11.png-d198da71fe2802265d393ad3c1e5b4be.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.9
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

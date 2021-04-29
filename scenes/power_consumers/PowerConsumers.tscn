@@ -9,8 +9,12 @@
 ]]
 script = ExtResource( 1 )
 
-[node name="DesktopHeater" type="Node" parent="."]
+[node name="DesktopHeater" type="Node" parent="." groups=[
+"notify_tick",
+]]
 script = ExtResource( 2 )
 
-[node name="AirConditioner" type="Node" parent="."]
+[node name="AirConditioner" type="Node" parent="." groups=[
+"notify_tick",
+]]
 script = ExtResource( 3 )

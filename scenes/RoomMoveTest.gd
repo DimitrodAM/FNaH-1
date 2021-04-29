@@ -2,64 +2,8 @@ extends Node2D
 
 const Util = preload("res://Util.gd")
 
-const rooms = {
-	"the_office_inner": {
-		"texture": preload("res://assets/rooms/the_office_inner.jpg"),
-		"transitions": {
-			"Outer": "the_office",
-		},
-		"subscenes": {
-			"Monitor": {
-				"scene": preload("res://scenes/monitors/CameraTest.tscn"),
-			},
-		},
-	},
-	
-	"the_office": {
-		"texture": preload("res://assets/rooms/the_office.jpg"),
-		"transitions": {
-			"Inner": "the_office_inner",
-			"Door": "hallway_the_office",
-		},
-	},
-	
-	"hallway_the_office": {
-		"texture": preload("res://assets/rooms/hallway_the_office.jpg"),
-		"transitions": {
-			"DoorTheOffice": "the_office",
-			"HallwayMaintenanceRoom": "hallway_maintenance_room",
-		},
-	},
-	
-	"hallway_maintenance_room": {
-		"texture": preload("res://assets/rooms/hallway_maintenance_room.jpg"),
-		"transitions": {
-			"DoorMaintenanceRoom": "maintenance_room",
-			"BackHallwayTheOffice": "hallway_the_office",
-		},
-	},
-	
-	"maintenance_room": {
-		"texture": preload("res://assets/rooms/maintenance_room.jpg"),
-		"transitions": {
-			"Door": "hallway_maintenance_room",
-			"Inner": "maintenance_room_inner",
-		},
-	},
-	
-	"maintenance_room_inner": {
-		"texture": preload("res://assets/rooms/maintenance_room_inner.jpg"),
-		"transitions": {
-			"Outer": "maintenance_room",
-		},
-		"subscenes": {
-			"PowerMonitor": {
-				"scene": preload("res://scenes/monitors/PowerMonitorTest.tscn"),
-			},
-		},
-	},
-}
-
+var BASE_WIDTH = ProjectSettings.get_setting("display/window/size/width")
+var BASE_HEIGHT = ProjectSettings.get_setting("display/window/size/height")
 
 export(String) var default_room
 
@@ -80,16 +24,16 @@ func _ready():
 			var transition_nodes = []
 			for transition in transitions.get_children():
 				transition_nodes.append(transition)
-				transition.connect("input_event", self, "_transition_click", [ rooms[room_name]["transitions"][transition.get_name()] ])
+				transition.connect("input_event", self, "_transition_click", [ RoomVars.rooms[room_name]["transitions"][transition.get_name()] ])
 				transition.connect("mouse_entered", self, "_transition_mouse_entered")
 				transition.connect("mouse_exited", self, "_transition_mouse_exited")
-			rooms[room_name]["transition_nodes"] = transition_nodes
+			RoomVars.rooms[room_name]["transition_nodes"] = transition_nodes
 		
 		var subscenes = room.get_node_or_null("Subscenes")
 		if subscenes != null:
 			for subscene in subscenes.get_children():
 				var subscene_name = subscene.get_name()
-				var subscene_obj = rooms[room_name]["subscenes"][subscene_name]
+				var subscene_obj = RoomVars.rooms[room_name]["subscenes"][subscene_name]
 				var instance = subscene_obj["scene"].instance()
 				var collision_shape = subscene.get_child(0)
 				Util.set_node_visible(instance, false)
@@ -97,15 +41,15 @@ func _ready():
 					collision_shape.position.x - collision_shape.shape.extents.x,
 					collision_shape.position.y - collision_shape.shape.extents.y))
 				Util.set_node_scale(instance, Vector2(
-					(collision_shape.shape.extents.x * 2) / get_viewport().size.x,
-					(collision_shape.shape.extents.y * 2) / get_viewport().size.y))
+					(collision_shape.shape.extents.x * 2) / BASE_WIDTH,
+					(collision_shape.shape.extents.y * 2) / BASE_HEIGHT))
 				for sig in subscene_obj.get("connections", {}):
 					instance.connect(sig, self, subscene_obj["connections"][sig], [instance])
 				instance.connect("ready", self, "_on_subscene_ready", [room_name, subscene, instance])
 				add_child_below_node($Room, instance)
 				
 	
-	var default_room_dict = rooms[default_room]
+	var default_room_dict = RoomVars.rooms[default_room]
 	# _old_room = default_room_dict
 	_change_room(default_room_dict)
 func _on_subscene_ready(room_name, subscene, instance):
@@ -118,9 +62,9 @@ func _on_subscene_ready(room_name, subscene, instance):
 	# if !"subscene_visibilities" in rooms[room_name]:
 	# 	rooms[room_name]["subscene_visibilities"] = {}
 	# rooms[room_name]["subscene_visibilities"][subscene_name] = original
-	if !"subscene_instances" in rooms[room_name]:
-		rooms[room_name]["subscene_instances"] = {}
-	rooms[room_name]["subscene_instances"][subscene_name] = instance
+	if !"subscene_instances" in RoomVars.rooms[room_name]:
+		RoomVars.rooms[room_name]["subscene_instances"] = {}
+	RoomVars.rooms[room_name]["subscene_instances"][subscene_name] = instance
 
 # Change room (no transition included).
 func _change_room(room):
@@ -130,7 +74,10 @@ func _change_room(room):
 		_change_subscenes_disabled(_old_room, true)
 	_change_transitions_disabled(room, false)
 	_change_subscenes_disabled(room, false)
+	RoomVars.current_room = room
+	var old_room = _old_room
 	_old_room = room
+	get_tree().call_group("notify_room", "on_room_changed", old_room if old_room != null else "null", room)
 
 
 # Enable or disable the transitions of a room.
@@ -154,7 +101,7 @@ func _change_subscenes_disabled(room, disabled):
 func _transition_click(_viewport, event, _shape_idx, transition):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT \
 			and !_in_transition:
-		_new_room = rooms[transition]
+		_new_room = RoomVars.rooms[transition]
 		$UICanvas/LeaveTween.interpolate_property($UICanvas/BlackScreen, "modulate",
 			Color(1, 1, 1, 0), Color(1, 1, 1, 1), .25,
 			Tween.TRANS_LINEAR)
@@ -193,8 +140,8 @@ func _on_monitor_fullscreen(subscene, _instance, fullscreen_monitor_node):
 		.5, Tween.TRANS_SINE)
 	$Camera/Tween.interpolate_property($Camera, "zoom",
 		$Camera.zoom, Vector2(
-			(collision_shape.shape.extents.x * 2) / 1920,
-			(collision_shape.shape.extents.y * 2) / 1080),
+			(collision_shape.shape.extents.x * 2) / BASE_WIDTH,
+			(collision_shape.shape.extents.y * 2) / BASE_HEIGHT),
 		.5, Tween.TRANS_SINE)
 	$Camera/Tween.start()
 	yield(get_tree().create_timer(.1), "timeout")
@@ -206,7 +153,7 @@ func _on_monitor_close(_subscene, _instance, fullscreen_monitor_node):
 	fullscreen_monitor_node.ignore_fullscreen = true
 	$Camera/Tween.stop_all()
 	$Camera/Tween.interpolate_property($Camera, "position",
-		$Camera.position, Vector2(1920 / 2, 1080 / 2),
+		$Camera.position, Vector2(BASE_WIDTH / 2, BASE_HEIGHT / 2),
 		.5, Tween.TRANS_SINE)
 	$Camera/Tween.interpolate_property($Camera, "zoom",
 		$Camera.zoom, Vector2(1, 1),

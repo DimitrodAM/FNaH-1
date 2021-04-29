@@ -1,9 +1,6 @@
 extends Node
 
 
-onready var timer = $TemperatureTimer
-
-
 const KELVIN_TO_CELSIUS_SUB = 273.15
 const KELVIN_TO_FAHRENHEIT_SUB = 459.67
 

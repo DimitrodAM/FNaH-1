@@ -7,6 +7,7 @@
 
 [node name="Node2D" type="Node2D" groups=[
 "notify_consumers",
+"notify_items",
 ]]
 script = ExtResource( 2 )
 consumer_scene = ExtResource( 4 )
@@ -16,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1920.0
 margin_bottom = 1080.0
+rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,6 +37,23 @@ margin_bottom = -229.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Consumers" type="VBoxContainer" parent="UI/Consumers"]
+margin_right = 1920.0
+custom_constants/separation = 0
+
+[node name="Separator" type="HSeparator" parent="UI/Consumers"]
+visible = false
+margin_top = 4.0
+margin_right = 1920.0
+margin_bottom = 8.0
+
+[node name="Items" type="VBoxContainer" parent="UI/Consumers"]
+visible = false
+margin_top = 4.0
+margin_right = 1920.0
+margin_bottom = 4.0
+custom_constants/separation = 0
 
 [node name="Total" type="HBoxContainer" parent="UI"]
 anchor_top = 1.0

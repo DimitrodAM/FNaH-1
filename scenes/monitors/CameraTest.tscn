@@ -2,20 +2,20 @@
 
 [ext_resource path="res://scenes/monitors/CameraTest.gd" type="Script" id=1]
 [ext_resource path="res://assets/rooms/hallway_the_office.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/monitor/static_4.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/ui/monitor/static_4.jpg" type="Texture" id=3]
 [ext_resource path="res://scenes/FullscreenMonitor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/monitor/camera_button.png" type="Texture" id=5]
-[ext_resource path="res://assets/monitor/camera_button_current.png" type="Texture" id=6]
-[ext_resource path="res://assets/monitor/static_8.jpg" type="Texture" id=7]
-[ext_resource path="res://assets/monitor/static_1.jpg" type="Texture" id=8]
-[ext_resource path="res://assets/monitor/static_2.jpg" type="Texture" id=9]
-[ext_resource path="res://assets/monitor/static_7.jpg" type="Texture" id=10]
-[ext_resource path="res://assets/monitor/static_6.jpg" type="Texture" id=11]
-[ext_resource path="res://assets/monitor/camera_01.png" type="Texture" id=12]
-[ext_resource path="res://assets/monitor/camera_02.png" type="Texture" id=13]
-[ext_resource path="res://assets/monitor/static_5.jpg" type="Texture" id=14]
-[ext_resource path="res://assets/monitor/static_3.jpg" type="Texture" id=15]
-[ext_resource path="res://assets/monitor/camera_03.png" type="Texture" id=16]
+[ext_resource path="res://assets/ui/monitor/camera_button.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/monitor/camera_button_current.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/monitor/static_8.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/ui/monitor/static_1.jpg" type="Texture" id=8]
+[ext_resource path="res://assets/ui/monitor/static_2.jpg" type="Texture" id=9]
+[ext_resource path="res://assets/ui/monitor/static_7.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/ui/monitor/static_6.jpg" type="Texture" id=11]
+[ext_resource path="res://assets/ui/monitor/camera_01.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/monitor/camera_02.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/monitor/static_5.jpg" type="Texture" id=14]
+[ext_resource path="res://assets/ui/monitor/static_3.jpg" type="Texture" id=15]
+[ext_resource path="res://assets/ui/monitor/camera_03.png" type="Texture" id=16]
 [ext_resource path="res://fonts/PixeldroidMenu.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://scenes/monitors/PowerMonitorTest.tscn" type="PackedScene" id=18]
 
@@ -61,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1920.0
 margin_bottom = 1080.0
+rect_clip_content = true
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -180,11 +181,9 @@ margin_left = -141.5
 margin_top = -2.0
 margin_right = 141.5
 margin_bottom = 84.0
-focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 toggle_mode = true
 action_mode = 0
-enabled_focus_mode = 0
 text = "Power"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,4 +199,5 @@ __meta__ = {
 }
 
 [node name="FullscreenMonitor" parent="UI" instance=ExtResource( 4 )]
+
 [connection signal="toggled" from="UI/PowerMonitorToggle" to="." method="_on_PowerMonitorToggle_toggled"]

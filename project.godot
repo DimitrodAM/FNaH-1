@@ -10,18 +10,19 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
-config/name="FNaH Items & Temperature Test"
+config/name="FNaH Powered Items Test"
 run/main_scene="res://scenes/MainTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-TemperatureVars="*res://scenes/Temperature.tscn"
+GameTick="*res://singletons/GameTick.gd"
+RoomVars="*res://singletons/RoomVars.gd"
+TemperatureVars="*res://singletons/TemperatureVars.gd"
 PowerVars="*res://singletons/PowerVars.gd"
 PowerConsumers="res://scenes/power_consumers/PowerConsumers.tscn"
 ItemVars="*res://singletons/ItemVars.gd"

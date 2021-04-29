@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/monitor_lower.png-952eac8fb94b08867cf99ab8bf85f8a2.stex"
+path="res://.import/plug_in.png-c26892f1d892a295a742103700b9e0cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/monitor/monitor_lower.png"
-dest_files=[ "res://.import/monitor_lower.png-952eac8fb94b08867cf99ab8bf85f8a2.stex" ]
+source_file="res://assets/ui/plug_in.png"
+dest_files=[ "res://.import/plug_in.png-c26892f1d892a295a742103700b9e0cc.stex" ]
 
 [params]
 

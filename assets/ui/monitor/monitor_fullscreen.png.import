@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/static_2.jpg-c319324ccd886f5b5e8b9289562f6a91.stex"
+path="res://.import/monitor_fullscreen.png-7826799b507ae4c428f6229c3030e1d8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/monitor/static_2.jpg"
-dest_files=[ "res://.import/static_2.jpg-c319324ccd886f5b5e8b9289562f6a91.stex" ]
+source_file="res://assets/ui/monitor/monitor_fullscreen.png"
+dest_files=[ "res://.import/monitor_fullscreen.png-7826799b507ae4c428f6229c3030e1d8.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.9
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

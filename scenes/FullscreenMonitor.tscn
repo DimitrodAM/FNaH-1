@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/FullscreenMonitor.gd" type="Script" id=1]
-[ext_resource path="res://assets/monitor/monitor_lower.png" type="Texture" id=2]
-[ext_resource path="res://assets/monitor/monitor_fullscreen.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/monitor/monitor_lower.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/monitor/monitor_fullscreen.png" type="Texture" id=3]
+
 
 [node name="FullscreenMonitor" type="Control"]
 script = ExtResource( 1 )
